@@ -1,0 +1,29 @@
+============================================================
+ACTIVIDAD 1: Inspeccion de dimensiones
+============================================================
+X.shape = (590, 10, 1)  -> [Batch Size, Sequence Length, Features]
+y.shape = (590, 1)  -> [Batch Size, 1]
+  Eje 0 (Batch Size): numero de ventanas/muestras (600 - 10 = 590).
+  Eje 1 (Sequence Length): pasos temporales por ventana (10).
+  Eje 2 (Features): variables por paso (1: el valor de la senoide).
+
+============================================================
+ACTIVIDAD 2: Parametros entrenables segun hidden_size
+============================================================
+hidden_size= 16 | RNN:    321 parametros | LSTM:   1233 parametros
+hidden_size= 64 | RNN:   4353 parametros | LSTM:  17217 parametros
+  RNN  : h*(in+h) + 2h  (+ capa fc: h+1)
+  LSTM : 4*[h*(in+h) + 2h]  (+ capa fc: h+1)
+
+============================================================
+ACTIVIDAD 3: Efecto de SEQ_LEN en la RNN simple
+============================================================
+RNN SEQ_LEN=10 | loss final train=0.000392 | MSE test=0.000402
+RNN SEQ_LEN=50 | loss final train=0.000100 | MSE test=0.000111
+
+============================================================
+RETO: RNN simple vs LSTM con SEQ_LEN = 50 (mismas condiciones)
+============================================================
+RNN  | loss final train=0.000100 | MSE test=0.000111
+LSTM | loss final train=0.000037 | MSE test=0.000033
+Mejor ajuste en test: LSTM
